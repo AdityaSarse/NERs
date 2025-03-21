@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NER Analysis Tool</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="theme-switch-wrapper">
+        <label class="theme-switch">
+            <input type="checkbox" id="themeToggle">
+            <div class="slider round"></div>
+        </label>
+        <span>Dark Mode</span>
+    </div>
+
+    <div class="landing-page" id="landingPage">
+        <div class="animated-title">
+            <h1>Named Entity Recognition</h1>
+            <p>Discover entities in your text with AI-powered analysis</p>
+        </div>
+        <button class="get-started-btn" id="getStartedBtn">Get Started</button>
+        <div class="background-animation"></div>
+    </div>
+
+    <div class="analysis-page hidden" id="analysisPage">
+        <div class="container">
+            <h2>Text Analysis</h2>
+            <div class="input-section">
+                <div class="input-tabs">
+                    <button class="tab-btn active" data-tab="text">Text Input</button>
+                    <button class="tab-btn" data-tab="file">File Upload</button>
+                </div>
+                <div class="tab-content active" id="textTab">
+                    <textarea id="textInput" placeholder="Enter your text here..."></textarea>
+                </div>
+                <div class="tab-content" id="fileTab">
+                    <div class="file-upload-container">
+                        <input type="file" id="fileInput" accept=".txt,.pdf" class="file-input" />
+                        <label for="fileInput" class="file-label">
+                            <div class="upload-icon-container">
+                                <span class="upload-icon">📄</span>
+                                <div class="upload-progress-ring hidden">
+                                    <div class="progress-circle"></div>
+                                </div>
+                            </div>
+                            <span class="upload-text">Drop your file here or click to upload</span>
+                            <span class="upload-hint">(Supported: PDF, TXT)</span>
+                        </label>
+                        <div id="fileInfo" class="file-info hidden">
+                            <div class="file-details">
+                                <span class="file-icon"></span>
+                                <span id="fileName" class="file-name"></span>
+                                <span id="fileSize" class="file-size"></span>
+                            </div>
+                            <button id="removeFile" class="remove-file" title="Remove file">×</button>
+                        </div>
+                    </div>
+                    <div id="filePreview" class="file-preview hidden">
+                        <div class="preview-header">
+                            <h3>File Preview</h3>
+                            <div class="preview-actions">
+                                <button id="editText" class="preview-action-btn">
+                                    <span class="action-icon">✏️</span>
+                                    Edit
+                                </button>
+                                <button id="revertText" class="preview-action-btn hidden">
+                                    <span class="action-icon">↩️</span>
+                                    Revert
+                                </button>
+                            </div>
+                        </div>
+                        <div class="preview-content">
+                            <textarea id="previewText" class="preview-text" readonly></textarea>
+                        </div>
+                    </div>
+                </div>
+                <button class="analyze-btn" id="analyzeBtn">
+                    <span class="btn-text">Analyze Text</span>
+                    <div class="loader hidden"></div>
+                </button>
+            </div>
+            <div class="results-section hidden" id="resultsSection">
+                <h3>Analysis Results</h3>
+                <div class="entity-legend">
+                    <span class="legend-item"><span class="color-dot person"></span>Person</span>
+                    <span class="legend-item"><span class="color-dot organization"></span>Organization</span>
+                    <span class="legend-item"><span class="color-dot location"></span>Location</span>
+                    <span class="legend-item"><span class="color-dot date"></span>Date</span>
+                </div>
+                <div id="highlightedText" class="highlighted-text"></div>
+                <button class="download-btn" id="downloadBtn">Download Results</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
